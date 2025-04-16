@@ -27,7 +27,7 @@ public class NinjaTest {
         });
 
         Ninja sakura = new Ninja("Sakura Haruno",12,"Namorar-Com-Naruto",()->{
-            System.out.println("\nSakura usou a cura!\n");
+            System.out.println("\nSakura Haruno usou a cura!\n");
         });
 
         naruto.mostrarDados();
