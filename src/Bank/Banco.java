@@ -95,16 +95,20 @@ public class Banco {
 
                     System.out.println("\nEnter a withdraw value: ");
                     double sacar = caixaDeTexto.nextDouble();
-                    saldo = (getSaldoConta() - sacar) - getImposto();
 
+                    if(getSaldoConta() >= (sacar+getImposto())){
 
-                    if(getSaldoConta()<sacar || getSaldoConta()<getImposto()){
-                       setSaldoConta(--saldo);
+                        saldo = (getSaldoConta() - sacar) - getImposto();
+                        setSaldoConta(saldo);
                         System.out.printf("\nSaldo-Negativo!\nDeposite Saldo!\n %.2f",getSaldoConta());
+
+                        setSaldoConta(saldo);
+                        System.out.println("\nUpdate account data: ");
+                        System.out.printf("\nAccount: %d, Holder: %s, Balance: $%.2f\n", getNumero(), getNomeTitular(), getSaldoConta());
                     }
-                    setSaldoConta(saldo);
-                    System.out.println("\nUpdate account data: ");
-                    System.out.printf("\nAccount: %d, Holder: %s, Balance: $%.2f\n", getNumero(), getNomeTitular(), getSaldoConta());
+                    else{
+                        System.out.println("\nSaldo Insuficiente!\n");
+                    }
 
                 } else if (opcao == 'n'||opcao=='N') {
                     setValorDepositoInicial(0);
@@ -121,16 +125,21 @@ public class Banco {
 
                     System.out.println("\nEnter a withdraw value: ");
                     double sacar = caixaDeTexto.nextDouble();
-                    saldo = (getSaldoConta() - sacar) - getImposto();
 
+                    if(getSaldoConta() >= (sacar+getImposto())){
 
-                    if(saldo<=0 || saldo<getImposto()){
-                        --saldo;
-                        System.out.println("Saldo-Negativo!\nDeposite Saldo!");
+                        saldo = (getSaldoConta() - sacar) - getImposto();
+                        setSaldoConta(saldo);
+                        System.out.printf("\nSaldo-Negativo!\nDeposite Saldo!\n %.2f",getSaldoConta());
+
+                        setSaldoConta(saldo);
+                        System.out.println("\nUpdate account data: ");
+                        System.out.printf("\nAccount: %d, Holder: %s, Balance: $%.2f\n", getNumero(), getNomeTitular(), getSaldoConta());
                     }
-                    setSaldoConta(saldo);
-                    System.out.println("\nUpdate account data: ");
-                    System.out.printf("\nAccount: %d, Holder: %s, Balance: $%.2f\n", getNumero(), getNomeTitular(), getSaldoConta());
+                    else{
+                        System.out.println("\nSaldo Insuficiente!\n");
+                    }
+
                 } else if(opcao=='s'||opcao=='S') {
                     System.out.println("\nObrigado Volte sempre ;)\n");
                     caixaDeTexto.close();
